@@ -1,9 +1,12 @@
-name: Publish to NPM
+name: Publish to npm
 
 on:
   push: 
     branches: 
       - main
+
+env:
+  PACKAGE_NAME: country-emoji-languages
 
 jobs:
   build:
@@ -34,7 +37,7 @@ jobs:
         id: version-check
         run: |
           VERSION=$(jq -r '.version' package.json)
-          if npm view your-package-name@$VERSION > /dev/null 2>&1; then
+          if npm view ${{ env.PACKAGE_NAME }}@$VERSION > /dev/null 2>&1; then
             echo "version_exists=true" >> $GITHUB_ENV
           else
             echo "version_exists=false" >> $GITHUB_ENV
@@ -45,7 +48,7 @@ jobs:
         if: env.version_exists == 'false'
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Skip Publishing
         if: env.version_exists == 'true'
