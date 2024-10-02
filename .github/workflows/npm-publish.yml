@@ -1,6 +1,6 @@
 # This workflow will build a Node.js project, run tests, and publish an npm package when something is pushed to the main branch.
 
-name: Publish to npm
+name: Publish to NPM
 
 on:
   push: 
