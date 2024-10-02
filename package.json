@@ -1,9 +1,11 @@
 {
     "name": "country-emoji-languages",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Get country languages from country flag emojis",
     "main": "index.js",
-    "scripts": {},
+    "scripts": {
+        "test": "node index.test.js"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/saiteja-madha/country-emoji-languages.git"
